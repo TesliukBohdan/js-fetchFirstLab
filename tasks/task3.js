@@ -6,7 +6,13 @@
 
 
 function updateUser(id, updatedData) {
-  // Ваш код
+  return fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(updatedData)
+  })
+  .then(res => res.json())
+  .then(data => data);
 }
 
 console.log(updateUser(1, { name: 'New Name' }));
