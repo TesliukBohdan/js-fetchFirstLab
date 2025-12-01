@@ -5,7 +5,15 @@
 "https://jsonplaceholder.typicode.com/users - адреса куди робити запит"
 
 function fetchUsers() {
-  // Ваш код
+  return fetch("https://jsonplaceholder.typicode.com/users")
+    .then(res => res.json())
+    .then(data => {
+      const users = [];
+      for (let i = 0; i < data.length; i++) {
+        users.push({ id: data[i].id, name: data[i].name });
+      }
+      return users;
+    });
 }
 
 console.log(fetchUsers())
